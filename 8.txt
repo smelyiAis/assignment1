@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        boolean containsOnlyDigits = Digits.containsOnlyDigits(inputString);
+        if (containsOnlyDigits) {
+            System.out.println("The string contains only digits");
+        } else {
+            System.out.println("The string contains non-digit characters");
+        }
+    }
+
+}
+
+public class Digits {
+
+    public static boolean containsOnlyDigits(String str) {
+        return containsOnlyDigitsHelper(str, 0);
+    }
+
+    private static boolean containsOnlyDigitsHelper(String str, int index) {
+        if (index == str.length()) {
+            return true;
+        }
+        char c = str.charAt(index);
+        if (c >= '0' && c <= '9') {
+            return containsOnlyDigitsHelper(str, index + 1);
+        } else {
+            return false;
+        }
+    }
+}
